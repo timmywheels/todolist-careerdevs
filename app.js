@@ -1,4 +1,4 @@
-//Todo List App Project
+//Todo List App
 
 //Version 1 Requirements
 
