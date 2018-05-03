@@ -3,7 +3,7 @@
 //Version 2 Requirements
 
 //store todos
-var todos = [];
+var todos = ['item 1', 'item 2', 'item 3'];
 
 //function to display todos
 function displayTodos(){
