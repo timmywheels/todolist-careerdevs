@@ -5,7 +5,7 @@
 var todoList = {
 	
 	//store todos array in an object
-	todos: [],
+	todos: ['item 1', 'item 2', 'item 3'],
 	
 	//create display todos method
 	displayTodos: function(){
