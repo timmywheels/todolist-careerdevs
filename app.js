@@ -15,16 +15,19 @@ var todoList = {
 	//create add todo method
 	addTodo: function(todo){
 		this.todos.push(todo);
+		this.displayTodos();
 	},
 	
 	//create change todo method
 	changeTodo: function(position, newValue){
 		this.todos[position] = newValue;
+		this.displayTodos();
 	},
 	
 	//create delete todo method
 	deleteTodo: function(position){
 		this.todos.splice(position, 1);
+		this.displayTodos();
 	}
 	
 }
