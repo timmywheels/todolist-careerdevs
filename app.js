@@ -1,21 +1,30 @@
 //Todo List App
 
-//Version 1 Requirements
+//Version 2 Requirements
 
 //store todos
-var todos = ['item 1', 'item 2', 'item 3'];
+var todos = [];
 
-// //display todos
-console.log(todos);
+//function to display todos
+function displayTodos(){
+	console.log('My Todos: ', todos);
+}
 
-// //add a new todo
-todos.push('item 4', 'item 5');
+//function to add new todo
+function addTodo(todo){
+	todos.push(todo);
+}
 
-// //change a todo
-todos[0] = 'item 1 changed';
+//function to change an exisiting todo
+function changeTodo(position, newValue){
+  todos[position] = newValue;
+}
 
-// //delete a todo
-todos.splice(1, 1);
+//function to delete an exisiting todo
+function deleteTodo(position){
+	todos.splice(position, 1);
+}
+
 
 
 
