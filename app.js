@@ -1,15 +1,27 @@
 //Todo List App
 
-//Version 4 Requirements
+//Version 5 Requirements
 
 var todoList = {
 	
 	//store todos array in an object
-	todos: ['item 1', 'item 2', 'item 3'],
+	todos: [],
 	
-	//create display todos method
+	//.displayTodos should show .todoText
+	//.displayTodos should tell you if .todos is empty
+	//.displayTodos should show .completed
 	displayTodos: function(){
-		console.log('My Todos:', this.todos);
+		if(this.todos.length === 0){
+			console.log('Your todo list is empty!')
+		} else {
+			for(var i = 0; i < this.todos.length; i++){
+				if(this.todos[i].completed === true){
+					console.log('[X]', this.todos[i].todoText);
+				} else {
+					console.log('[ ]', this.todos[i].todoText);
+				}
+			}
+		}
 	},
 	
 	//create add todo method
