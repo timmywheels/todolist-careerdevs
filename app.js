@@ -88,21 +88,43 @@ var todoList = {
 	}
 };
 
-//Display Todos button should run todoList.displayTodos()
-var displayTodosButton = document.getElementById('displayTodosButton');
+//Refactoring display todos and toggle all DOM methods
 
-//Toggle All button should run todoList.toggleAll() 
-var toggleAllButton = document.getElementById('toggleAllButton');
-
-//Run displayTodos() method when someone clicks the todos button
-displayTodosButton.addEventListener('click', function(){
-	todoList.displayTodos();
-});
-
-//Run toggleAll() method when someone clicks the toggle all button
-toggleAllButton.addEventListener('click', function(){
-	todoList.toggleAll();
-});
-
+var handlers = {
+	
+	displayTodos: function(){
+		todoList.displayTodos();
+	},
+	
+	toggleAll: function(){
+		todoList.toggleAll();
+	},
+	
+	addTodo: function(){
+		var addTodoTextInput = document.getElementById('addTodoTextInput');
+		todoList.addTodo(addTodoTextInput.value);
+		addTodoTextInput.value = '';
+	},
+	
+	changeTodo: function(){
+		var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
+		var changeTodoTextInput = document.getElementById('changeTodoTextInput');
+		todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
+		changeTodoPositionInput = '';
+		changeTodoTextInput = '';
+	},
+	
+	deleteTodo: function(){
+		var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
+		todoList.deleteTodo(deleteTodoPositionInput.value);
+		deleteTodoPositionInput.value = '';
+	},
+	
+	toggleCompleted: function(){
+		var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
+		todoList.toggleCompleted(toggleCompletedPositionInput.value);
+		toggleCompletedPositionInput.value = '';
+	}
+}
 
 
