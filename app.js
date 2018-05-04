@@ -1,6 +1,6 @@
 //Todo List App
 
-//Version 6 Requirements
+//Version 7 Requirements
 
 var todoList = {
 	
@@ -86,9 +86,23 @@ var todoList = {
 		
 		this.displayTodos();
 	}
-	
-	
-}
+};
+
+//Display Todos button should run todoList.displayTodos()
+var displayTodosButton = document.getElementById('displayTodosButton');
+
+//Toggle All button should run todoList.toggleAll() 
+var toggleAllButton = document.getElementById('toggleAllButton');
+
+//Run displayTodos() method when someone clicks the todos button
+displayTodosButton.addEventListener('click', function(){
+	todoList.displayTodos();
+});
+
+//Run toggleAll() method when someone clicks the toggle all button
+toggleAllButton.addEventListener('click', function(){
+	todoList.toggleAll();
+});
 
 
 
