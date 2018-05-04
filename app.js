@@ -1,6 +1,6 @@
 //Todo List App
 
-//Version 7 Requirements
+//Version 8 Requirements
 
 var todoList = {
 	
