@@ -1,6 +1,6 @@
 //Todo List App
 
-//Version 9 Requirements
+//Version 10 Requirements
 
 var todoList = {
 	
@@ -87,10 +87,8 @@ var handlers = {
 		view.displayTodos();
 	},
 	
-	deleteTodo: function(){
-		var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
-		todoList.deleteTodo(deleteTodoPositionInput.value);
-		deleteTodoPositionInput.value = '';
+	deleteTodo: function(position){
+		todoList.deleteTodo(position);
 		view.displayTodos();
 	},
 	
@@ -124,13 +122,44 @@ var view = {
 				todoTextWithCompletion = '[ ] ' + todo.todoText;
 			}
 			
+			//each li should have an id as it's todo position 
+			todoLi.id = i;
 			//each li element should contain .todoText
 			//each li element should show .completed
 			todoLi.textContent = todoTextWithCompletion;
+			todoLi.appendChild(this.createDeleteButton());
 			todosUl.appendChild(todoLi);
 		}
 		
-	}	
+	},
 	
+	//there should be a delete button for each todo
+	createDeleteButton: function(){
+		
+		var deleteButton = document.createElement('button');
+		deleteButton.textContent = 'Delete';
+		deleteButton.className = 'deleteButton';
+		return deleteButton;
+			
+	},
+	
+	setUpEventListeners: function(){
+		
+		var todosUl = document.querySelector('ul');
+
+		//delete button should have access to todo id
+		todosUl.addEventListener('click', function(event){
+		console.log(event.target.parentNode.id);
+	
+		var elementClicked = event.target;
+			if(elementClicked.className === 'deleteButton'){
+			handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+			}
+		});
+	}
 };
+
+view.setUpEventListeners();
+
+
 
