@@ -1,6 +1,6 @@
 //Todo List App
 
-//Version 10 Requirements
+//Version 11 Requirements
 
 var todoList = {
 	
@@ -45,24 +45,21 @@ var todoList = {
 		var totalTodos = this.todos.length;
 		var completedTodos = 0;
 		
-		for(var i = 0; i < totalTodos; i++){
-			if(this.todos[i].completed === true){
+		this.todos.forEach(function(todo){
+			if(todo.completed === true){
 				completedTodos++;
 			}
-		}
+		});
 		
-		if(completedTodos === totalTodos){
-			for(var i = 0; i < totalTodos; i++){
-				this.todos[i].completed = false;
-			}
-		} else {
-			for(var i = 0; i < totalTodos; i++){
-				this.todos[i].completed = true;
-			}
-		}
-	}
+		this.todos.forEach(function(todo){
+			if(completedTodos === totalTodos){
+				todo.completed = false;
+			} else {
+				todo.completed = true;
+				}
+			});
+		},
 };
-
 //Refactoring display todos and toggle all DOM methods
 
 var handlers = {
@@ -111,9 +108,9 @@ var view = {
 	displayTodos: function(){
 		var todosUl = document.querySelector('ul');
 		todosUl.innerHTML = '';
-		for(var i = 0; i < todoList.todos.length; i++){
+		
+		todoList.todos.forEach(function(todo, position) {
 			var todoLi = document.createElement('li');
-			var todo = todoList.todos[i];
 			var todoTextWithCompletion = '';
 			
 			if(todo.completed === true){
@@ -122,14 +119,13 @@ var view = {
 				todoTextWithCompletion = '[ ] ' + todo.todoText;
 			}
 			
-			//each li should have an id as it's todo position 
-			todoLi.id = i;
-			//each li element should contain .todoText
-			//each li element should show .completed
+			todoLi.id = position;
+		// 	//each li element should contain .todoText
+		// 	//each li element should show .completed
 			todoLi.textContent = todoTextWithCompletion;
 			todoLi.appendChild(this.createDeleteButton());
 			todosUl.appendChild(todoLi);
-		}
+		}, this)
 		
 	},
 	
